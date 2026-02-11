@@ -6,11 +6,12 @@ import connectDB from './config/database.js';
 dotenv.config();
 
 // Validate required environment variables
-const requiredEnvVars = ['PORT', 'MONGO_URI', 'OPENAI_API_KEY'];
+const requiredEnvVars = ['PORT', 'MONGO_URI', 'GROQ_API_KEY'];
 const missingEnvVars = requiredEnvVars.filter((varName) => !process.env[varName]);
 
 if (missingEnvVars.length > 0) {
   console.error(`❌ Missing required environment variables: ${missingEnvVars.join(', ')}`);
+  console.error(`💡 Get your free Groq API key from: https://console.groq.com/keys`);
   process.exit(1);
 }
 
@@ -23,6 +24,7 @@ connectDB();
 const server = app.listen(PORT, () => {
   console.log(`🚀 Server running on port ${PORT}`);
   console.log(`📍 Environment: ${process.env.NODE_ENV || 'development'}`);
+  console.log(`🤖 Using Groq API (Free) with model: llama-3.3-70b-versatile`);
   console.log(`🔗 Health check: http://localhost:${PORT}/health`);
 });
 

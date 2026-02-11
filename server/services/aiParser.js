@@ -1,14 +1,15 @@
-import openai from '../config/openai.js';
+import groqClient from '../config/groq.js';
 
 /**
- * Parse physics word problem using OpenAI with JSON mode
+ * Parse physics word problem using Groq API (Free)
+ * Model: llama-3.3-70b-versatile
  * @param {string} problemText - The natural language physics problem
  * @returns {Promise<object>} - Structured physics data
  */
 export const parsePhysicsProblem = async (problemText) => {
   try {
-    const response = await openai.chat.completions.create({
-      model: 'gpt-4o',
+    const response = await groqClient.chat.completions.create({
+      model: 'llama-3.3-70b-versatile',
       temperature: 0,
       messages: [
         {
@@ -84,7 +85,7 @@ REQUIRED JSON FORMAT (respond with ONLY this JSON, no other text):
     }
 
     if (error.response) {
-      throw new Error(`OpenAI API Error: ${error.response.data.error.message}`);
+      throw new Error(`Groq API Error: ${error.response.data.error.message}`);
     }
 
     if (error instanceof SyntaxError) {
