@@ -1,0 +1,27 @@
+{
+  "name": "physics-parser-backend",
+  "version": "1.0.0",
+  "description": "AI-Powered Physics Word Problem Parser - Backend",
+  "main": "server.js",
+  "type": "module",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "nodemon server-entry.js"
+  },
+  "keywords": ["physics", "ai", "parser", "mern"],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.18.2",
+    "mongoose": "^8.0.3",
+    "dotenv": "^16.3.1",
+    "openai": "^4.28.0",
+    "zod": "^3.22.4",
+    "helmet": "^7.1.0",
+    "express-rate-limit": "^7.1.5",
+    "cors": "^2.8.5"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.2"
+  }
+}
